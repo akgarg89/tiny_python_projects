@@ -13,6 +13,7 @@ consonant_words = [
 ]
 vowel_words = ['aviso', 'eel', 'iceberg', 'octopus', 'upbound']
 template = 'Ahoy, Captain, {} {} off the larboard bow!'
+template2 = 'Ahoy, Captain, {} {} off the starboard bow!'
 
 
 # --------------------------------------------------
@@ -66,3 +67,12 @@ def test_vowel_upper():
     for word in vowel_words:
         out = getoutput(f'{prg} {word.upper()}')
         assert out.strip() == template.format('an', word.upper())
+
+
+# --------------------------------------------------
+def test_starboard():
+    """--starboard --> starboard"""
+
+    for word in vowel_words:
+        out = getoutput(f'{prg} {word.upper()} --starboard')
+        assert out.strip() == template2.format('an', word.upper())
